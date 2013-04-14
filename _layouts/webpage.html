@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="{% if page.language %}{{ page.language }}{% else %}{{ site.language }}{% endif %}">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="{% if page.language %}{{ page.language }}{% else %}{{ site.language }}{% endif %}" prefix="{% for ns in site.namespaces %}{{ ns[0] }}: {{ ns[1] }} {% endfor %}">
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width; initial-scale=1"/>
 {% if page.description %}<meta name="description" content="{{ page.description }}"/>
 {% endif %}{% if page.keywords %}<meta name="keywords" content="{{ page.keywords }}"/>
 {% endif %}<meta name="robots" content="all"/>
-<title>{% if page.title %}{{ page.title }} &#x2014; {% endif %}{{ site.title }}</title>
+<title property="s:name dc:title">{% if page.title %}{{ page.title }} &#x2014; {% endif %}{{ site.title }}</title>
 {% if site.stylesheet %}<link rel="stylesheet" type="text/css" href="{{ site.stylesheet }}"/>
 {% endif %}</head>
-<body>
+<body typeof="{% if page.typeof %}{{ page.typeof }}{% else %}s:WebPage{% endif %}">
 {{ content }}
 </body>
 </html>
