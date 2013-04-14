@@ -8,4 +8,5 @@ namespaces: {
   s:    'http://schema.org/',
   v:    'http://rdf.data-vocabulary.org/#',
   xsd:  'http://www.w3.org/2001/XMLSchema#' }
+stylesheet: /css/main.css
 title: Website Template

@@ -1,0 +1,50 @@
+html
+{
+	margin: 1em;
+}
+
+body
+{
+	font-family: sans-serif;
+	font-size: 14px;
+	margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6
+{
+	font-family: serif;
+}
+
+h1
+{
+	border-bottom: 2px solid #EEE;
+}
+
+*:first-child
+{
+	margin-top: 0;
+}
+
+a
+{
+	color: black;
+	text-decoration: none;
+	border-bottom: 1px solid blue;
+}
+
+a:hover
+{
+	color: blue;
+}
+
+table.info
+{
+	width: 100%;
+}
+
+table.info th
+{
+	text-align: left;
+	font-weight: normal;
+	font-style: italic;
+}
