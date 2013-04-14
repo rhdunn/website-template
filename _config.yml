@@ -1,3 +1,4 @@
+exclude: ['Makefile']
 language: en
 namespaces: {
   dc:   'http://purl.org/dc/elements/1.1/',
