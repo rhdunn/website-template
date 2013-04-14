@@ -8,8 +8,11 @@
 {% endif %}<meta name="robots" content="all"/>
 <title property="s:name dc:title">{% if page.title %}{{ page.title }} &#x2014; {% endif %}{{ site.title }}</title>
 {% if site.stylesheet %}<link rel="stylesheet" type="text/css" href="{{ site.stylesheet }}"/>
+{% endif %}{% if page.primary_topic_id %}<link rel="foaf:primaryTopic" href="#{{ page.primary_topic_id }}"/>
 {% endif %}</head>
 <body typeof="{% if page.typeof %}{{ page.typeof }}{% else %}s:WebPage{% endif %}">
-{{ content }}
+{% if page.primary_topic_id %}<div id="{{ page.primary_topic_id }}" about="#{{ page.primary_topic_id }}" typeof="{{ page.primary_topic }}">
+{% endif %}{{ content }}{% if page.primary_topic_id %}
+</div>{% endif %}
 </body>
 </html>
