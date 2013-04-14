@@ -1,0 +1,5 @@
+# Vim temporary files
+.*.sw*
+
+# Jekyll build output
+_site/
