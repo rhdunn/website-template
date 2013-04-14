@@ -1,7 +1,4 @@
-html
-{
-	margin: 1em;
-}
+/* minimalistic styling for HTML content */
 
 body
 {
@@ -36,6 +33,26 @@ a:hover
 {
 	color: blue;
 }
+
+/* page layout */
+
+*[role=banner]
+{
+	background-color: #02A;
+	color: white;
+	font-family: serif;
+	font-size: 2em;
+	font-weight: bold;
+	padding: 0.4em 0.25em;
+	text-shadow: #EEE 1px 1px 1px;
+}
+
+*[role=main]
+{
+	margin: 1em;
+}
+
+/* information table */
 
 table.info
 {
