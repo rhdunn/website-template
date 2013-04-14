@@ -11,8 +11,8 @@
 {% endif %}{% if page.primary_topic_id %}<link rel="foaf:primaryTopic" href="#{{ page.primary_topic_id }}"/>
 {% endif %}</head>
 <body typeof="{% if page.typeof %}{{ page.typeof }}{% else %}s:WebPage{% endif %}">
-{% if page.primary_topic_id %}<div id="{{ page.primary_topic_id }}" about="#{{ page.primary_topic_id }}" typeof="{{ page.primary_topic }}">
-{% endif %}{{ content }}{% if page.primary_topic_id %}
-</div>{% endif %}
+<div {% if page.primary_topic_id %}id="{{ page.primary_topic_id }}" about="#{{ page.primary_topic_id }}" typeof="{{ page.primary_topic }}" {% endif%}role="main">
+{{ content }}
+</div>
 </body>
 </html>
