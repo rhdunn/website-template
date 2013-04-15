@@ -11,8 +11,7 @@
 {% endif %}{% if page.primary_topic_id %}<link rel="foaf:primaryTopic" href="#{{ page.primary_topic_id }}"/>
 {% endif %}</head>
 <body typeof="{% if page.typeof %}{{ page.typeof }}{% else %}s:WebPage{% endif %}">
-<header role="banner">
-{% include banner.html %}</header>
+{% include banner.html %}
 {% include breadcrumbs.html %}
 <div {% if page.primary_topic_id %}id="{{ page.primary_topic_id }}" about="#{{ page.primary_topic_id }}" typeof="{{ page.primary_topic }}" {% endif%}role="main">
 {{ content }}
