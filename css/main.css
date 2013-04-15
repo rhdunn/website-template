@@ -64,6 +64,42 @@ footer
 	margin: 1em;
 }
 
+/* buttons */
+
+.button
+{
+	float: right;
+	padding: 0.1em 0.25em;
+	margin: 0.35em;
+	font-weight: bold;
+	border-radius: 0.25em;
+	cursor: pointer;
+}
+
+.button,
+.button:hover,
+.button.blue,
+.button.blue:hover
+{
+	background-color: #00F;
+	border-top:    1px solid #008;
+	border-left:   1px solid #008;
+	border-bottom: 1px solid #88F;
+	border-right:  1px solid #88F;
+	color: white;
+}
+
+.button.red,
+.button.red:hover
+{
+	background-color: #F00;
+	border-top:    1px solid #800;
+	border-left:   1px solid #800;
+	border-bottom: 1px solid #F88;
+	border-right:  1px solid #F88;
+	color: white;
+}
+
 /* breadcrumbs */
 
 .breadcrumbs > ol
