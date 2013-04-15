@@ -13,16 +13,7 @@
 <body typeof="{% if page.typeof %}{{ page.typeof }}{% else %}s:WebPage{% endif %}">
 <header role="banner">
 {% include banner.html %}</header>
-<nav role="navigation" class="breadcrumbs">
-  <a rel="s:breadcrumbs" href="#breadcrumb1"></a>
-  {% assign refnum = 1 %}<ol>
-{% for crumb in page.breadcrumbs %}{% for p in site.pages %}{% if p.url == crumb %}    <li id="breadcrumb{{ refnum }}" about="#breadcrumb{{ refnum }}" typeof="v:Breadcrumb">
-      <a rel="v:url" property="v:title" href="{{ p.url }}">{% if p.title %}{{ p.title }}{% else %}Home{% endif %}</a>
-      {% capture refnum %}{{ refnum | plus: 1 }}{% endcapture %}<a rel="v:child" href="#breadcrumb{{ refnum }}"></a>
-    </li>
-    {% endif %}{% endfor %}{% endfor %}<li id="breadcrumb{{ refnum }}" about="#breadcrumb{{ refnum }}" typeof="v:Breadcrumb"><span property="v:title">{% if page.title %}{{ page.title }}{% else %}Home{% endif %}</span></li>
-  </ol>
-</nav>
+{% include breadcrumbs.html %}
 <div {% if page.primary_topic_id %}id="{{ page.primary_topic_id }}" about="#{{ page.primary_topic_id }}" typeof="{{ page.primary_topic }}" {% endif%}role="main">
 {{ content }}
 </div>
