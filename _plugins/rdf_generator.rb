@@ -35,7 +35,7 @@ module Jekyll
     def write(dest)
       dest_path = destination(dest)
       @metadata.load()
-      RDF::Writer.open(dest_path, :prefixes => @metadata.prefixes) do |writer|
+      RDF::Writer.open(dest_path, :prefixes => @metadata.prefixes, :max_depth => 1) do |writer|
         @metadata.graph.each_statement do |statement|
           writer << statement
         end
