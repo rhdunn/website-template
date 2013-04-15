@@ -32,8 +32,9 @@ module Jekyll
     def generate(site)
       site.pages.each do |page|
         if page.output_ext == '.html' and page.data['rdf']
-          prefixes = site.config['namespaces'].clone
+          page.write(site.dest)
 
+          prefixes = site.config['namespaces'].clone
           src = page.destination(site.dest)
           base_uri = File.join(site.config['url'], page.basename)
 
