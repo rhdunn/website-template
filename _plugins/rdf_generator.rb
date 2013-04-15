@@ -30,7 +30,6 @@ module Jekyll
     }
 
     def generate(site)
-      puts "RDF Generator"
       @rdf_files = []
       site.pages.each do |page|
         if page.output_ext == '.html' and page.data['rdf']
