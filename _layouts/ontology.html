@@ -19,3 +19,15 @@ typeof: owl:Ontology s:WebPage
 {% endif %}</section>
 {% endfor %}
 </section>
+
+<section>
+<h1>Properties</h1>
+{% for item in page.properties %}
+<section id="{{ item.label }}" about="#{{ item.label }}" typeof="rdf:Property">
+  <h1 property="rdfs:label">{{ item.label }}</h1>
+  <p property="rdfs:comment">{{ item.comment }}</p>
+  <a rel="rdfs:isDefinedBy" href=""></a>
+{% if item.subproperty %}  <a rel="rdfs:subPropertyOf" href="{{ item.subproperty }}"></a>
+{% endif %}</section>
+{% endfor %}
+</section>
