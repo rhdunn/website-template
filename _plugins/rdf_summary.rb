@@ -41,20 +41,27 @@ module Jekyll
             case p['type']
             when 'uri'
               uri = item[p['name']]
-              if uri.include? '#'
-                name  = uri.split('#')[1]
-                value = "<a rel=\"#{p['property']}\" href=\"#{uri}\">#{name}</a>"
+              if ! uri.kind_of?(Array)
+                uris = [uri]
               else
-                if uri.include? ':' and not uri.include? 'http://'
-                  nsref, name = uri.split(':')
-                  expanded_uri = "#{ns[nsref]}#{name}"
-                  value = "<a rel=\"#{p['property']}\" href=\"#{expanded_uri}\">#{name}</a>"
+                uris = uri
+              end
+              uris.each do |uri|
+                if uri.include? '#'
+                  name  = uri.split('#')[1]
+                  value = "<a rel=\"#{p['property']}\" href=\"#{uri}\">#{name}</a>"
                 else
-                  value = "<a rel=\"#{p['property']}\" href=\"#{uri}\">#{uri}</a>"
+                  if uri.include? ':' and not uri.include? 'http://'
+                    nsref, name = uri.split(':')
+                    expanded_uri = "#{ns[nsref]}#{name}"
+                    value = "<a rel=\"#{p['property']}\" href=\"#{expanded_uri}\">#{name}</a>"
+                  else
+                    value = "<a rel=\"#{p['property']}\" href=\"#{uri}\">#{uri}</a>"
+                  end
                 end
+                ret << "    <tr><th>#{p['label']}</th><td>#{value}</td></tr>"
               end
             end
-            ret << "    <tr><th>#{p['label']}</th><td>#{value}</td></tr>"
           end
         end
         ret << "  </table>"
