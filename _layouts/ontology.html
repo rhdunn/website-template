@@ -1,0 +1,21 @@
+---
+layout: webpage
+typeof: owl:Ontology s:WebPage
+---
+
+<h1>{{ page.title }}</h1>
+
+<section>
+{{ content }}</section>
+
+<section>
+<h1>Classes</h1>
+{% for item in page.classes %}
+<section id="{{ item.label }}" about="#{{ item.label }}" typeof="rdfs:Class">
+  <h1 property="rdfs:label">{{ item.label }}</h1>
+  <p property="rdfs:comment">{{ item.comment }}</p>
+  <a rel="rdfs:isDefinedBy" href=""></a>
+{% if item.subclass %}  <a rel="rdfs:subClassOf" href="{{ item.subclass }}"></a>
+{% endif %}</section>
+{% endfor %}
+</section>
