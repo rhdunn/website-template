@@ -1,9 +1,10 @@
 ---
 layout: webpage
-typeof: owl:Ontology s:WebPage
+primary_topic: owl:Ontology
+primary_topic_id: ''
 ---
 
-<h1>{{ page.title }}</h1>
+<h1 property="dc:title">{{ page.title }}</h1>
 
 <section>
 {{ content }}</section>
@@ -14,7 +15,7 @@ typeof: owl:Ontology s:WebPage
 <section id="{{ item.label }}" about="#{{ item.label }}" typeof="rdfs:Class">
   <h1 property="rdfs:label">{{ item.label }}</h1>
   <p property="rdfs:comment">{{ item.comment }}</p>
-  <a rel="rdfs:isDefinedBy" href=""></a>
+  <a rel="rdfs:isDefinedBy" href="#"></a>
 {% if item.subclass %}  <a rel="rdfs:subClassOf" href="{{ item.subclass }}"></a>
 {% endif %}</section>
 {% endfor %}
@@ -26,7 +27,7 @@ typeof: owl:Ontology s:WebPage
 <section id="{{ item.label }}" about="#{{ item.label }}" typeof="rdf:Property">
   <h1 property="rdfs:label">{{ item.label }}</h1>
   <p property="rdfs:comment">{{ item.comment }}</p>
-  <a rel="rdfs:isDefinedBy" href=""></a>
+  <a rel="rdfs:isDefinedBy" href="#"></a>
 {% if item.subproperty %}  <a rel="rdfs:subPropertyOf" href="{{ item.subproperty }}"></a>
 {% endif %}</section>
 {% endfor %}
