@@ -11,24 +11,10 @@ primary_topic_id: ''
 
 <section>
 <h1>Classes</h1>
-{% for item in page.classes %}
-<section id="{{ item.label }}" about="#{{ item.label }}" typeof="rdfs:Class">
-  <h1 property="rdfs:label">{{ item.label }}</h1>
-  <p property="rdfs:comment">{{ item.comment }}</p>
-  <a rel="rdfs:isDefinedBy" href="#"></a>
-{% if item.subclass %}  <a rel="rdfs:subClassOf" href="{{ item.subclass }}"></a>
-{% endif %}</section>
-{% endfor %}
-</section>
+{% for item in page.classes %}{{ item | rdf_summary: 'class' }}
+{% endfor %}</section>
 
 <section>
 <h1>Properties</h1>
-{% for item in page.properties %}
-<section id="{{ item.label }}" about="#{{ item.label }}" typeof="rdf:Property">
-  <h1 property="rdfs:label">{{ item.label }}</h1>
-  <p property="rdfs:comment">{{ item.comment }}</p>
-  <a rel="rdfs:isDefinedBy" href="#"></a>
-{% if item.subproperty %}  <a rel="rdfs:subPropertyOf" href="{{ item.subproperty }}"></a>
-{% endif %}</section>
-{% endfor %}
-</section>
+{% for item in page.properties %}{{ item | rdf_summary: 'property' }}
+{% endfor %}</section>
