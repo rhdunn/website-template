@@ -4,8 +4,10 @@ module Jekyll
   module RdfSummaryFilter
 
     PROPERTIES = [
-      {'name' => 'subClassOf'    , 'type' => 'uri' , 'label' => 'Type' , 'property' => 'rdfs:subClassOf'},
-      {'name' => 'subPropertyOf' , 'type' => 'uri' , 'label' => 'Type' , 'property' => 'rdfs:subPropertyOf'}
+      {'name' => 'subClassOf'    , 'type' => 'uri' , 'label' => 'Type'   , 'property' => 'rdfs:subClassOf'},
+      {'name' => 'subPropertyOf' , 'type' => 'uri' , 'label' => 'Type'   , 'property' => 'rdfs:subPropertyOf'},
+      {'name' => 'domain'        , 'type' => 'uri' , 'label' => 'Domain' , 'property' => 'rdfs:domain'},
+      {'name' => 'range'         , 'type' => 'uri' , 'label' => 'Range'  , 'property' => 'rdfs:range'}
     ]
 
     def rdf_summary(item, item_type)
