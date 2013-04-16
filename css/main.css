@@ -24,6 +24,12 @@ a:hover
 	color: blue;
 }
 
+pre > code
+{
+	display: block;
+	margin-left: 2em;
+}
+
 /* page layout */
 
 *[role=banner]
