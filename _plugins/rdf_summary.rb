@@ -9,6 +9,9 @@ module Jekyll
     ]
 
     def rdf_summary(item, item_type)
+      config = @context.registers[:site].config
+      ns = config['namespaces']
+
       case item_type
       when 'class'
         type = 'rdfs:Class'
@@ -39,6 +42,14 @@ module Jekyll
               if uri.include? '#'
                 name  = uri.split('#')[1]
                 value = "<a rel=\"#{p['property']}\" href=\"#{uri}\">#{name}</a>"
+              else
+                if uri.include? ':' and not uri.include? 'http://'
+                  nsref, name = uri.split(':')
+                  expanded_uri = "#{ns[nsref]}#{name}"
+                  value = "<a rel=\"#{p['property']}\" href=\"#{expanded_uri}\">#{name}</a>"
+                else
+                  value = "<a rel=\"#{p['property']}\" href=\"#{uri}\">#{uri}</a>"
+                end
               end
             end
             ret << "    <tr><th>#{p['name']}</th><td>#{value}</td></tr>"
