@@ -129,16 +129,38 @@ footer
 	font-weight: bold;
 }
 
-/* information table */
+/* tables */
 
-table.info
+table.info,
+table.data
 {
 	width: 100%;
+	margin-bottom: 1em;
+}
+
+table.info th,
+table.data th
+{
+	text-align: left;
 }
 
 table.info th
 {
-	text-align: left;
 	font-weight: normal;
 	font-style: italic;
+}
+
+table.data th
+{
+	border-bottom: 1px solid #CCC;
+}
+
+table.data td
+{
+	border-bottom: 1px solid #EEE;
+}
+
+table.data tr:last-child td
+{
+	border-bottom: none;
 }
