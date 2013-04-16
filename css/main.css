@@ -24,6 +24,12 @@ a:hover
 	color: blue;
 }
 
+th,
+td
+{
+	vertical-align: top;
+}
+
 pre > code
 {
 	display: block;
@@ -202,6 +208,7 @@ ul.columns3
 	-webkit-column-count: 3;
 }
 
+table.info td ul,
 ol.columns3,
 ul.columns3
 {
