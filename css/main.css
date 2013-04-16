@@ -7,16 +7,6 @@ body
 	margin: 0;
 }
 
-h1, h2, h3, h4, h5, h6
-{
-	font-family: serif;
-}
-
-h1
-{
-	border-bottom: 2px solid #EEE;
-}
-
 *:first-child
 {
 	margin-top: 0;
@@ -32,6 +22,18 @@ a
 a:hover
 {
 	color: blue;
+}
+
+/* headings */
+
+h1, h2, h3, h4, h5, h6
+{
+	font-family: serif;
+}
+
+*[role=main] > h1
+{
+	border-bottom: 2px solid #EEE;
 }
 
 /* page layout */
