@@ -30,7 +30,7 @@ module Jekyll
       ret << "  <h1 property=\"rdfs:label\">#{item['label']}</h1>"
       if ext_info
         ret << "  <table class=\"info\">"
-        ret << "  <col width=\"30%\"/><col width=\"70%\"/>"
+        ret << "  <col width=\"33%\"/><col width=\"67%\"/>"
         PROPERTIES.each do |p|
           if item.has_key?(p['name'])
             case p['type']
