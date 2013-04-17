@@ -36,6 +36,12 @@ pre > code
 	margin-left: 2em;
 }
 
+blockquote.about
+{
+	margin-top: -1em;
+	font-style: italic;
+}
+
 /* page layout */
 
 *[role=banner]
