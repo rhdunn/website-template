@@ -36,6 +36,12 @@ pre > code
 	margin-left: 2em;
 }
 
+p.post-date
+{
+	float: right;
+	margin-top: 1em;
+}
+
 blockquote.about
 {
 	margin-top: -1em;
