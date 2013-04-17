@@ -7,10 +7,10 @@ module Jekyll
   class RdfMetadata
     attr_accessor :prefixes, :graph
 
-    def initialize(site, page)
+    def initialize(site, page, basename)
       @prefixes = site.config['namespaces'].clone
       @src = page.destination(site.dest)
-      @base_uri = File.join(site.config['url'], page.basename)
+      @base_uri = File.join(site.config['url'], basename)
     end
 
     def load()
@@ -52,12 +52,20 @@ module Jekyll
 
     def generate(site)
       site.pages.each do |page|
-        if page.output_ext == '.html' and page.data['rdf']
-          metadata = RdfMetadata.new(site, page)
-          page.data['rdf'].each do |type|
-            filename = page.url.clone.sub('.html', EXTENSIONS[type])
-            site.static_files << RdfFile.new(site, site.dest, '/', filename, metadata)
-          end
+        self.process(page, site)
+      end
+      site.posts.each do |post|
+        self.process(post, site)
+      end
+    end
+
+    def process(page, site)
+      if page.output_ext == '.html' and page.data['rdf']
+        basename = page.url.clone.sub('.html', '')
+        metadata = RdfMetadata.new(site, page, basename)
+        page.data['rdf'].each do |type|
+          filename = page.url.clone.sub('.html', EXTENSIONS[type])
+          site.static_files << RdfFile.new(site, site.dest, '/', filename, metadata)
         end
       end
     end
