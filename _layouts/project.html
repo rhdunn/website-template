@@ -83,7 +83,7 @@ primary_topic_id: doap
 <dd>{{ app.description }}</dd>
 {% endfor %}</dl>
 {%endif%}<h1>Releases</h1>
-<ul>{% for item in site.categories.release %}{% if item.project == page.title %}<li><a rel="doap:release" href="{{ site.root }}{{ item.url | replace: '.html', '' }}#release">{{ item.version }}</a></li>
+<ul>{% for item in site.categories.release %}{% if item.project == page.title %}<li><a rel="doap:release" href="{{ site.root }}{{ item.url | replace: '.html', '' }}#release">{{ item.title }}</a></li>
 {% endif %}{% endfor %}</ul>
 
 </section>
