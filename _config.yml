@@ -1,4 +1,4 @@
-exclude: ['Makefile','README.md']
+exclude: ['COPYING.CC_BY_30','Makefile','README.md']
 language: en
 namespaces: {
   dc:   'http://purl.org/dc/elements/1.1/',

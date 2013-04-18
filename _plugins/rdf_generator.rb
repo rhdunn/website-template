@@ -1,3 +1,7 @@
+# Copyright (C) 2013 Reece H. Dunn
+#
+# License: [CC-BY 3.0](http://creativecommons.org/licenses/by/3.0/)
+
 require 'rdf/rdfxml'
 require 'rdf/rdfa'
 require 'rdf/turtle'

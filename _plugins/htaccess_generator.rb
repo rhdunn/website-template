@@ -1,3 +1,7 @@
+# Copyright (C) 2013 Reece H. Dunn
+#
+# License: [CC-BY 3.0](http://creativecommons.org/licenses/by/3.0/)
+
 module Jekyll
 
   class HtAccessFile < StaticFile

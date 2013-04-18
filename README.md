@@ -46,3 +46,22 @@ by navigating to `http://127.0.0.1`.
 
 To deploy the site to the web, upload the content of `_site` to the place
 specified by your website hosting service provider.
+
+## License
+
+The following files/directories are licensed under the CC-BY 3.0 license:
+
+    _includes/
+    _layouts/
+    README.md
+
+The files in the `_plugins` and `css` directories specify their license terms
+in the files themselves.
+
+The following files are licensed under the CC0 and Public Domain licenses:
+
+    _config.yml
+    Makefile
+
+Any other files are not part of the website-template project and are
+governed by the license specified in the downstream project.
