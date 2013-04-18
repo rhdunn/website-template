@@ -6,13 +6,12 @@ primary_topic_id: me
 
 <h1>About <span property="s:name foaf:name">{{ page.person }}</span></h1>
 
-{{ content }}
-
-<h2>Contact Information</h2>
-
 <table class="info">
 <tr>
 <th>email</th>
 <td><a rel="s:email foaf:mbox" href="mailto:{{ page.email }}">{{ page.email }}</a></td>
 </tr>
 </table>
+
+<section>
+{{ content }}</section>
