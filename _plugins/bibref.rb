@@ -46,8 +46,11 @@ module Jekyll
         ret << "    </span>"
       end
       if ref.has_key? 'date'
-        year = ref['date'].split('-')[0]
-        ret << "    <span property=\"dc:date\" datatype=\"xsd:date\" content=\"#{ref['date']}\">#{year}</span>."
+        year, month, day = ref['date'].split('-')
+        if !day
+          day = '01'
+        end
+        ret << "    <span property=\"dc:date\" datatype=\"xsd:date\" content=\"#{year}-#{month}-#{day}\">#{year}</span>."
       end
       ret << "  </span>"
       ret << "</li>"
