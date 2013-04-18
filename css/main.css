@@ -80,6 +80,7 @@ blockquote.about
 {
 	border-bottom: 2px solid #EEE;
 	font-family: serif;
+	margin-top: 0;
 }
 
 footer
