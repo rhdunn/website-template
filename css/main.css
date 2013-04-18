@@ -88,6 +88,13 @@ footer
 	border-top: 1px solid #EEE;
 	padding-top: 1em;
 	margin: 1em;
+	clear: both;
+}
+
+.screenshot
+{
+	float: right;
+	padding-left: 1em;
 }
 
 /* buttons */
