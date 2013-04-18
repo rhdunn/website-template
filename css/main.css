@@ -93,18 +93,21 @@ footer
 
 .button
 {
-	float: right;
-	padding: 0.1em 0.25em;
 	margin: 0.35em;
-	font-weight: bold;
-	border-radius: 0.25em;
-	cursor: pointer;
+	float: right;
 }
 
-.button,
-.button:hover,
-.button.blue,
-.button.blue:hover
+.button a
+{
+	padding: 0.1em 0.25em;
+	font-weight: bold;
+	border-radius: 0.25em;
+}
+
+.button a,
+.button:hover a,
+.button.blue a,
+.button.blue:hover a
 {
 	background-color: #00F;
 	border-top:    1px solid #008;
@@ -114,8 +117,8 @@ footer
 	color: white;
 }
 
-.button.red,
-.button.red:hover
+.button.red a,
+.button.red:hover a
 {
 	background-color: #F00;
 	border-top:    1px solid #800;
