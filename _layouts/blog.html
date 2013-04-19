@@ -11,6 +11,6 @@ primary_topic_id: blog
 <h1>Blog</h1>
 
 <ul class="posts">
-{% for post in site.posts %}<li><span>{{ post.date | date_to_string }}</span> <a rel="s:blogPost" href="{{ post.url | replace: '.html', '' }}">{% if post.category == 'release' %}{{ post.project }} {{ post.title }} released{% else %}{{ post.title }}{% endif %}</a></li>
-{% endfor %}</ul>
+{% for post in site.posts %}{% if page.categories contains post.category %}<li><span>{{ post.date | date_to_string }}</span> <a rel="s:blogPost" href="{{ post.url | replace: '.html', '' }}">{% if post.category == 'release' %}{{ post.project }} {{ post.title }} released{% else %}{{ post.title }}{% endif %}</a></li>
+{% endif %}{% endfor %}</ul>
 </section>
