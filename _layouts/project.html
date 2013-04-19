@@ -1,5 +1,6 @@
 ---
 layout: webpage
+typeof: s:Blog
 primary_topic: s:SoftwareApplication doap:Project
 primary_topic_id: doap
 ---
@@ -83,7 +84,12 @@ primary_topic_id: doap
 <dd>{{ app.description }}</dd>
 {% endfor %}</dl>
 {%endif%}<h1>Releases</h1>
-<ul>{% for item in site.categories.release %}{% if item.project == page.title %}<li><a rel="doap:release" href="{{ site.root }}{{ item.url | replace: '.html', '' }}#release">{{ item.title }}</a></li>
+<ul class="posts">
+{% for post in site.categories.release %}{% if post.project == page.title %}<li>
+<span>{{ post.date | date_to_string }}</span>
+<a about="" rel="s:blogPost" href="{{ post.url | replace: '.html', '' }}">{% if post.category == 'release' %}{{ post.project }} {{ post.title }} released{% else %}{{ post.title }}{% endif %}</a>
+<a rel="doap:release" href="{{ post.url | replace: '.html', '' }}#release"></a>
+</li>
 {% endif %}{% endfor %}</ul>
 
 </section>
