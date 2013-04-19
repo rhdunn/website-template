@@ -83,7 +83,7 @@ primary_topic_id: doap
 {% for app in page.applications %}<dt>{{ app.name }}</dt>
 <dd>{{ app.description }}</dd>
 {% endfor %}</dl>
-{%endif%}<h1>Releases</h1>
+{%endif%}<h1>News</h1>
 <ul class="posts">
 {% for post in site.categories.release %}{% if post.project == page.title %}<li>
 <span>{{ post.date | date_to_string }}</span>
