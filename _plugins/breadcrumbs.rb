@@ -11,13 +11,13 @@ module Jekyll
       crumbs = get_breadcrumb(page, true)
       ret = []
       ret << "<nav role=\"navigation\" class=\"breadcrumbs\">"
-      ret << "  <a rel=\"s:breadcrumbs\" href=\"#breadcrumb1\"></a>"
+      ret << "  <a rel=\"s:breadcrumbs\" href=\"#breadcrumb0\"></a>"
       ret << "  <ol>"
       crumbs.each_with_index do |crumb, index|
-        ret << "    <li id=\"breadcrumb#{index}\" about=\"breadcrumb#{index}\" typeof=\"v:Breadcrumb\">"
+        ret << "    <li id=\"#breadcrumb#{index}\" about=\"#breadcrumb#{index}\" typeof=\"v:Breadcrumb\">"
         if crumb['url']
           ret << "      <a rel=\"v:url\" property=\"v:title\" href=\"#{crumb['url']}\">#{crumb['title']}</a>"
-          ret << "      <a rel=\"v:child\" href=\"breadcrumb#{index+1}\"></a>"
+          ret << "      <a rel=\"v:child\" href=\"#breadcrumb#{index+1}\"></a>"
         else
           ret << "      <span property=\"v:title\">#{crumb['title']}</span>"
         end
