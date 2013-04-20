@@ -24,7 +24,12 @@ module Jekyll
       categories = page.data['categories']
       converter = Jekyll::Converters::Markdown.new(site.config)
 
-      @title = site.config['title']
+      if page.data['title']
+        @title = page.data['title']
+      else
+        @title = site.config['title']
+      end
+
       @description = page.data['description']
       @language = site.config['language']
       @pubdate = site.time
