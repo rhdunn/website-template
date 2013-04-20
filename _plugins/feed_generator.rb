@@ -10,7 +10,13 @@ module Jekyll
     attr_accessor :title , :link , :pubdate , :description
 
     def initialize(post, converter)
-      @title = post.data['title']
+      if post.data['project']
+        project = post.data['project']
+        @title = "#{project} #{post.data['title']} released"
+      else
+        @title = post.data['title']
+      end
+
       @link = post.url.clone.sub('.html', '')
       @pubdate = post.date
       @description = CGI.escapeHTML(converter.convert(post.content))
@@ -21,7 +27,12 @@ module Jekyll
     attr_accessor :title , :description , :language , :pubdate , :copyright , :items
 
     def initialize(site, page)
-      categories = page.data['categories']
+      if page.data['layout'] == 'project'
+        categories = ['release']
+        project = page.data['title']
+      else
+        categories = page.data['categories']
+      end
       converter = Jekyll::Converters::Markdown.new(site.config)
 
       if page.data['title']
@@ -36,7 +47,7 @@ module Jekyll
       @copyright = "Copyright (C) #{site.config['start_year']}-#{site.time.year} #{site.config['author']['name']}"
       @items = []
       site.posts.each do |post|
-        if !(categories & post.categories).empty?
+        if !(categories & post.categories).empty? and project == post.data['project']
           @items << FeedItem.new(post, converter)
         end
       end
