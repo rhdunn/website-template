@@ -9,7 +9,8 @@
 <title property="s:name dc:title">{% if page.title %}{{ page.title }} &#x2014; {% endif %}{{ site.title }}</title>
 {% if site.stylesheet %}<link rel="stylesheet" type="text/css" href="{{ site.stylesheet }}"/>
 {% endif %}{% if page.primary_topic_id %}<link rel="foaf:primaryTopic" href="#{{ page.primary_topic_id }}"/>
-{% endif %}</head>
+{% endif %}{% for feed in page.feeds %}<link rel="alternate" type="application/rss+xml" title="{{ feed | data_name }}" href="{{ page.url | data_url: feed }}"/>
+{% endfor %}</head>
 <body typeof="{% if page.typeof %}{{ page.typeof }}{% else %}s:WebPage{% endif %}">
 {% include banner.html %}
 {% for item in page.rdf %}<div class="button"><a href="{{ page.url | data_url: item }}">{{ item | data_name }}</a></div>
