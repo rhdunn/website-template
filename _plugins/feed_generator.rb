@@ -46,7 +46,7 @@ module Jekyll
       @pubdate = site.time
       @copyright = "Copyright (C) #{site.config['start_year']}-#{site.time.year} #{site.config['author']['name']}"
       @items = []
-      site.posts.each do |post|
+      site.posts.reverse_each do |post|
         if !(categories & post.categories).empty? and project == post.data['project']
           @items << FeedItem.new(post, converter)
         end
