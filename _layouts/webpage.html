@@ -16,7 +16,7 @@
 {% for item in page.rdf %}<div class="button"><a href="{{ page.url | data_url: item }}">{{ item | data_name }}</a></div>
 {% endfor %}{% for feed in page.feeds %}<div class="button"><a href="{{ page.url | data_url: feed }}">{{ feed | data_name }}</a></div>
 {% endfor %}
-{% include breadcrumbs.html %}
+{{ page | breadcrumbs }}
 <div {% if page.primary_topic_id %}id="{{ page.primary_topic_id }}" about="#{{ page.primary_topic_id }}" typeof="{{ page.primary_topic }}" {% endif%}role="main">
 {{ content }}
 {% if page.author %}<p>&#x2014; <a rel="dc:creator s:author" href="{{ page.author.foaf }}">{{ page.author.name }}</a></p>
