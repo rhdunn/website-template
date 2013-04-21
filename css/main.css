@@ -130,6 +130,31 @@ footer
 	color: white;
 }
 
+/* read more links */
+
+.more
+{
+	text-align: right;
+}
+
+.more:before
+{
+	content: '\BB';
+}
+
+.more a
+{
+	color: navy;
+	font-weight: bold;
+	font-variant: small-caps;
+	border: 0;
+}
+
+.more a:hover
+{
+	border-bottom: 1px solid blue;
+}
+
 /* breadcrumbs */
 
 .breadcrumbs > ol
