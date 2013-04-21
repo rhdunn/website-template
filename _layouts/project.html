@@ -67,7 +67,7 @@ primary_topic_id: doap
 </tr>
 {% endif %}{% if page.license == 'gpl3+' %}<tr>
 <th>License</th>
-<td><a rel="doap:license" href="http://www.gnu.org/licenses/gpl-3.0">GPLv3+</a></td>
+<td>{{ page.license | project_license }}</td>
 </tr>
 {% endif %}</table>
 
