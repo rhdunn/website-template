@@ -263,12 +263,21 @@ ul.posts span:after
 
 /* column layouts */
 
+ol.columns2,
+ul.columns2,
 ol.columns3,
 ul.columns3
 {
 	list-style: none;
 	margin: 0;
 	padding: 0;
+}
+
+.columns2.flex,
+.columns2.flex
+{
+	-moz-column-count: 2;
+	-webkit-column-count: 2;
 }
 
 .columns3.flex,
