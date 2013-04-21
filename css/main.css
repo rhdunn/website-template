@@ -271,8 +271,8 @@ ul.columns3
 	padding: 0;
 }
 
-ol.columns3,
-ul.columns3
+.columns3.flex,
+.columns3.flex
 {
 	-moz-column-count: 3;
 	-webkit-column-count: 3;
