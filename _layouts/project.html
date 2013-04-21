@@ -53,7 +53,7 @@ primary_topic_id: doap
 <th>Categories</th>
 <td>
 <ul>
-{% for item in page.categories %}<li><a rel="doap:category" href="{{ item.url }}">{{ item.name }}</a></li>
+{% for item in page.categories %}<li><a rel="doap:category" href="{{ item.url }}"></a>{{ item.name }}</li>
 {% endfor %}</ul>
 </td>
 </tr>
