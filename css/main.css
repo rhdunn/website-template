@@ -311,3 +311,19 @@ ul.columns3
 	-moz-column-count: 3;
 	-webkit-column-count: 3;
 }
+
+/* implementation status */
+
+.na,
+.inprogress,
+.success,
+.failure
+{
+	font-weight: bold;
+	text-align: center;
+}
+
+.na         { background-color: #e0eeee; color: black; }
+.inprogress { background-color: #ffe544; color: black; }
+.success    { background-color: #caff70; color: black; }
+.failure    { background-color: #ff2020; color: white; }
