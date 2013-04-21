@@ -41,18 +41,6 @@ pre > code
 	margin-left: 2em;
 }
 
-p.post-date
-{
-	float: right;
-	margin-top: -1em;
-}
-
-blockquote.about
-{
-	margin-top: -1em;
-	font-style: italic;
-}
-
 /* page layout */
 
 *[role=banner]
@@ -95,6 +83,12 @@ footer
 {
 	float: right;
 	padding-left: 1em;
+}
+
+.about
+{
+	margin-top: -1em;
+	font-style: italic;
 }
 
 /* buttons */
@@ -227,23 +221,26 @@ table.data tr:last-child td
 	border-bottom: none;
 }
 
-/* list styling */
-
-ul.posts,
-table.info td ul,
-ol.columns3,
-ul.columns3
+table.info td ul
 {
 	list-style: none;
 	margin: 0;
 	padding: 0;
 }
 
-ol.columns3,
-ul.columns3
+/* blog posts */
+
+p.post-date
 {
-	-moz-column-count: 3;
-	-webkit-column-count: 3;
+	float: right;
+	margin-top: -1em;
+}
+
+ul.posts
+{
+	list-style: none;
+	margin: 0;
+	padding: 0;
 }
 
 ul.posts li
@@ -262,4 +259,21 @@ ul.posts span:after
 	border-left:  0.5em solid white;
 	border-right: 0.4em solid white;
 	content: '\2014';
+}
+
+/* column layouts */
+
+ol.columns3,
+ul.columns3
+{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+ol.columns3,
+ul.columns3
+{
+	-moz-column-count: 3;
+	-webkit-column-count: 3;
 }
