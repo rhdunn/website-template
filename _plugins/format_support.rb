@@ -45,11 +45,22 @@ module Jekyll
     class Formatter
       attr_accessor :title
 
+      ESCAPES = {
+        '\[' => '[',
+        '\]' => ']',
+        '\*' => '*',
+      }
+
       def initialize(title)
         @title = title
       end
 
       def parse(value)
+        if value
+          ESCAPES.each do |match, replacement|
+            value = value.sub(match, replacement)
+          end
+        end
         return value
       end
 
