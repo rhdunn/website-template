@@ -10,6 +10,7 @@ module Jekyll
     def format_support(item_type)
       info, data = get_data(item_type)
       ret = []
+      ret << "<h1>#{info['title']}</h1>"
       ret << "<div class=\"percentage-bar\">"
       ret << "<div class=\"#{info['status']}\" style=\"width: #{info['percentage-complete']}%;\">#{info['percentage-complete']}%</div>"
       ret << "</div>"
@@ -115,6 +116,12 @@ module Jekyll
           row.store(property, propval)
         end
         data << row
+      end
+
+      if item['type'] == 'css-spec'
+        info['title'] = "CSS #{item['title']} Level #{item['level']}"
+      else
+        info['title'] = item['title']
       end
       info['percentage-complete'] = ((info['success'].to_f / (info['items'] - info['na'])) * 100).to_i
       if info['percentage-complete'] < 25
