@@ -8,6 +8,12 @@ module Jekyll
   module BibRefFilter
 
     def bibref(ref)
+      if ref.is_a? String
+        site = @context.registers[:site]
+        refurl = File.join(site.source, '_references', ref)
+        ref = YAML.safe_load(File.read(refurl))
+      end
+
       pub = ref['publisher']
 
       ret = []
