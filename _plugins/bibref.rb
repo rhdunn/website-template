@@ -34,11 +34,7 @@ module Jekyll
         ret << "    <a href=\"#{ref['href']}\"><span property=\"dc:title\">#{ref['title']}</span></a>."
       end
       if pub
-        if pub.has_key? 'abbr'
-          pubref = pub['abbr']
-        else
-          pubref = pub['name'].clone.sub(/ /, '_')
-        end
+        pubref = "pub_#{ref['id']}"
 
         ret << "    <span rel=\"dc:publisher\" resource=\"_:#{pubref}\"></span>"
         ret << "    <span typeof=\"foaf:Organisation\" about=\"_:#{pubref}\">"
