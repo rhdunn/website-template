@@ -95,6 +95,7 @@ module Jekyll
     PROPERTIES = {
       'category' => StringFormatter.new(nil),
       'comments' => StringFormatter.new('Comments'),
+      'implemented' => StatusFormatter.new('Implemented'),
       'model' => StatusFormatter.new('Model'),
       'parsing' => StatusFormatter.new('Parsing'),
       'section' => StringFormatter.new('Section'),
@@ -105,6 +106,7 @@ module Jekyll
 
     FORMATS = {
       'css-spec' => ['section', 'category', 'title', 'url', 'model', 'parsing', 'tests', 'comments'],
+      'spec'     => ['section', 'title', 'url', 'implemented', 'tests', 'comments'],
     }
 
     def get_data(item)
@@ -132,7 +134,12 @@ module Jekyll
       if item['type'] == 'css-spec'
         info['title'] = "CSS #{item['title']} Level #{item['level']}"
       else
-        info['title'] = item['title']
+        if item['type'] == 'spec'
+          parent = get_page(item['parent'], item['url']).data
+          info['title'] = "#{parent['title']} #{item['title']}"
+        else
+          info['title'] = item['title']
+        end
       end
       info['percentage-complete'] = ((info['success'].to_f / (info['items'] - info['na'])) * 100).to_i
       if info['percentage-complete'] < 25
@@ -145,6 +152,21 @@ module Jekyll
         end
       end
       return info, data
+    end
+
+    def get_page(parent, url)
+      site = @context.registers[:site]
+      site.pages.each do |item|
+        if item.url == parent
+          return item
+        end
+      end
+      site.posts.each do |item|
+        if item.url == parent
+          return item
+        end
+      end
+      raise Exception.new("#{url}: Unable to locate parent \"#{parent}\"")
     end
 
   end
