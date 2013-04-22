@@ -327,3 +327,34 @@ ul.columns3
 .inprogress { background-color: #ffe544; color: black; }
 .success    { background-color: #caff70; color: black; }
 .failure    { background-color: #ff2020; color: white; }
+
+/* percentage bars */
+
+div.percentage-bar
+{
+	width: 100%;
+	border: 1px solid #f0f0f0;
+	background-color: #f8f8f8;
+}
+
+div.percentage-bar,
+div.percentage-bar div
+{
+	border-radius: 0.25em;
+	text-align: center;
+}
+
+div.percentage-bar div.inprogress
+{
+	border: 1px solid #ddc514;
+}
+
+div.percentage-bar div.success
+{
+	border: 1px solid #8abf20;
+}
+
+div.percentage-bar div.failure
+{
+	border: 1px solid #dd0000;
+}

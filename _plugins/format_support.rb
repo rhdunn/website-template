@@ -8,8 +8,11 @@ module Jekyll
   module FormatSupportFilter
 
     def format_support(item_type)
-      data = get_data(item_type)
+      info, data = get_data(item_type)
       ret = []
+      ret << "<div class=\"percentage-bar\">"
+      ret << "<div class=\"#{info['status']}\" style=\"width: #{info['percentage-complete']}%;\">#{info['percentage-complete']}%</div>"
+      ret << "</div>"
       ret << "<table class=\"data\">"
       ret << "<tr>"
       data[0].each do |property, item|
@@ -34,8 +37,8 @@ module Jekyll
   private
 
     STATUS = {
-      'no' => {'class' => 'failure' , 'text' => 'No'},
-      'na' => {'class' => 'na'      , 'text' => 'N/A'},
+      'no' => {'status' => 'failure' , 'text' => 'No'},
+      'na' => {'status' => 'na'      , 'text' => 'N/A'},
     }
 
     class Formatter
@@ -67,13 +70,13 @@ module Jekyll
           return s
         end
         if value.match /^~/
-          return {'class' => 'inprogress' , 'text' => value.sub('~', '')}
+          return {'status' => 'inprogress' , 'text' => value.sub('~', '')}
         end
-        return {'class' => 'success' , 'text' => value}
+        return {'status' => 'success' , 'text' => value}
       end
 
       def html(value)
-        return "<td class=\"#{value['class']}\">#{value['text']}</td>"
+        return "<td class=\"#{value['status']}\">#{value['text']}</td>"
       end
     end
 
@@ -93,17 +96,37 @@ module Jekyll
     }
 
     def get_data(item)
+      info = {'items' => 0 , 'success' => 0 , 'inprogress' => 0}
+      STATUS.each do |key, value|
+        info.store(value['status'], 0)
+      end
+
       spec = FORMATS[item['type']]
       data = []
       item['content'].split("\n").each do |line|
         row = {}
         spec.zip(line.split(",")).each do |key, value|
           property = PROPERTIES[key]
-          row.store(property, property.parse(value))
+          propval = property.parse(value)
+          if property.is_a? StatusFormatter
+            info[propval['status']] += 1
+            info['items'] += 1
+          end
+          row.store(property, propval)
         end
         data << row
       end
-      return data
+      info['percentage-complete'] = ((info['success'].to_f / (info['items'] - info['na'])) * 100).to_i
+      if info['percentage-complete'] < 25
+        info['status'] = 'failure'
+      else
+        if info['percentage-complete'] > 75
+          info['status'] = 'success'
+        else
+          info['status'] = 'inprogress'
+        end
+      end
+      return info, data
     end
 
   end
