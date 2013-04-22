@@ -30,23 +30,24 @@ module Jekyll
 
   private
 
-    def get_page(url)
+    def get_page(parent, url)
       site = @context.registers[:site]
       site.pages.each do |item|
-        if item.url == url
+        if item.url == parent
           return item
         end
       end
       site.posts.each do |item|
-        if item.url == url
+        if item.url == parent
           return item
         end
       end
+      raise Exception.new("#{url}: Unable to locate parent \"#{parent}\"")
     end
 
     def get_breadcrumb(page, is_top)
       if page['parent']
-        parent = get_breadcrumb(get_page(page['parent']).to_liquid, false)
+        parent = get_breadcrumb(get_page(page['parent'], page['url']).to_liquid, false)
       else
         parent = []
       end
