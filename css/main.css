@@ -56,6 +56,7 @@ pre > code
 
 *[role=navigation]
 {
+	padding: 0.5em 1em;
 	border-bottom: 1px solid #02A;
 }
 
@@ -95,7 +96,8 @@ footer
 
 .button
 {
-	margin: 0.35em;
+	margin-top: 0.5em;
+	margin-left: 0.5em;
 	float: right;
 }
 
@@ -104,6 +106,12 @@ footer
 	padding: 0.1em 0.25em;
 	font-weight: bold;
 	border-radius: 0.25em;
+}
+
+body > .button
+{
+	margin-right: 1em;
+	margin-left: -0.5em;
 }
 
 .button a,
@@ -160,7 +168,7 @@ footer
 .breadcrumbs > ol
 {
 	list-style: none;
-	margin: 0.5em 1em;
+	margin: 0;
 	padding: 0;
 }
 
