@@ -49,6 +49,7 @@ module Jekyll
         '\[' => '[',
         '\]' => ']',
         '\*' => '*',
+        '\_' => '_',
       }
 
       def initialize(title)
