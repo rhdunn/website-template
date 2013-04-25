@@ -60,7 +60,7 @@ module Jekyll
       def parse(value)
         if value
           ESCAPES.each do |match, replacement|
-            value = value.sub(match, replacement)
+            value = value.gsub(match, replacement)
           end
         end
         return value
