@@ -41,6 +41,27 @@ pre > code
 	margin-left: 2em;
 }
 
+/* sub/sup should not affect the height of the text line. */
+
+sub,
+sup
+{
+	font-size: 70%;
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
+}
+
+sup
+{
+	top: -0.5em;
+}
+
+sub
+{
+	bottom: -0.25em;
+}
+
 /* page layout */
 
 *[role=banner]
