@@ -19,7 +19,6 @@ _license: "CC-BY-SA 3.0"
 <body typeof="{% if page.typeof %}{{ page.typeof }}{% else %}s:WebPage{% endif %}">
 {% include banner.html %}
 {% for item in page.rdf %}{{ page.url | button: item }}
-{% endfor %}{% for feed in page.feeds %}{{ page.url | button: feed }}
 {% endfor %}
 {{ page | breadcrumbs }}
 <div {% if page.primary_topic_id %}id="{{ page.primary_topic_id }}" about="#{{ page.primary_topic_id }}" typeof="{{ page.primary_topic }}" {% endif%}role="main">
