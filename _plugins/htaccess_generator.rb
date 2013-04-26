@@ -13,6 +13,12 @@ module Jekyll
         f.write("\n")
         f.write("AddType application/rdf+xml .rdf\n")
         f.write("\n")
+        if @site.config['error_pages']
+          @site.config['error_pages'].each do |error, page|
+            f.write("ErrorDocument #{error} #{page}\n")
+          end
+          f.write("\n")
+        end
         f.write("RewriteEngine On\n")
         f.write("\n")
         f.write("# Redirect X.html to X\n")
