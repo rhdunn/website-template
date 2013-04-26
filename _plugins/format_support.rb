@@ -26,7 +26,7 @@ module Jekyll
         ret << "<tr>"
         row.each do |property, item|
           if property.title
-            ret << property.html(item)
+            ret << property.html(item, row)
           end
         end
         ret << "</tr>"
@@ -53,8 +53,9 @@ module Jekyll
         '\\\\' => '\\',
       }
 
-      def initialize(title)
+      def initialize(title, urlref=nil)
         @title = title
+        @urlref = urlref
       end
 
       def parse(value)
@@ -66,7 +67,10 @@ module Jekyll
         return value
       end
 
-      def html(value)
+      def html(value, data)
+        if @urlref and data[@urlref] != ''
+          return "<td><a href=\"#{data[@urlref]}\">#{value}</a></td>"
+        end
         return "<td>#{value}</td>"
       end
     end
@@ -89,10 +93,12 @@ module Jekyll
         return {'status' => 'success' , 'text' => value}
       end
 
-      def html(value)
+      def html(value, data)
         return "<td class=\"#{value['status']}\">#{value['text']}</td>"
       end
     end
+
+    prop_url = UrlFormatter.new(nil)
 
     PROPERTIES = {
       'category' => StringFormatter.new(nil),
@@ -102,8 +108,8 @@ module Jekyll
       'parsing' => StatusFormatter.new('Parsing'),
       'section' => StringFormatter.new('Section'),
       'tests' => StatusFormatter.new('Tests'),
-      'title' => StringFormatter.new('Title'),
-      'url' => UrlFormatter.new(nil),
+      'title' => StringFormatter.new('Title', prop_url),
+      'url' => prop_url,
     }
 
     FORMATS = {
