@@ -159,6 +159,15 @@ body > .button
 	color: white;
 }
 
+.button.image,
+.button.image a
+{
+	background-color: white;
+	border: 0;
+	margin: 0;
+	padding: 0;
+}
+
 /* read more links */
 
 .more

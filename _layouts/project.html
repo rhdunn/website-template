@@ -7,7 +7,9 @@ primary_topic: s:SoftwareApplication doap:Project
 primary_topic_id: doap
 ---
 
-<div class="button"><a rel="doap:download-page s:downloadURL" href="{{ page.install }}">Install</a></div>
+{% if page.install_android %}<div class="button image"><a rel="doap:download-page s:downloadURL" href="{{ page.install_android }}"><img alt="{{ page.title }} on Google Play" title="{{ page.title }} on Google Play" src="https://developer.android.com/images/brand/en_app_rgb_wo_45.png"/></a></div>
+{% else %}<div class="button"><a rel="doap:download-page s:downloadURL" href="{{ page.install }}">Install</a></div>
+{% endif %}
 <div><a rel="doap:homepage s:url" href="{{ page.homepage }}"></a></div>
 
 <h1 property="doap:name s:name">{{ page.title }}</h1>
