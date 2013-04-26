@@ -16,17 +16,29 @@ module Jekyll
     end
 
     def button(item, item_type)
-      data = TYPES[item_type]
-      name = data['name']
-      href = item.sub('.html', data['ext'])
-      return "<div class=\"button\"><a href=\"#{href}\">#{name}</a></div>"
+      data  = TYPES[item_type]
+      name  = data['name']
+      href  = item.sub('.html', data['ext'])
+      image = data['image']
+      if image
+        return "<div class=\"button image\"><a href=\"#{href}\"><img alt=\"#{name}\" title=\"#{name}\" src=\"#{image}\"/></a></div>"
+      else
+        return "<div class=\"button\"><a href=\"#{href}\">#{name}</a></div>"
+      end
     end
 
   private
 
     TYPES = {
-      'rdfxml' => {'name' => 'RDF' , 'ext' => '.rdf' , 'mime' => 'application/rdf+xml'},
-      'rss2'   => {'name' => 'RSS' , 'ext' => '.rss' , 'mime' => 'application/rss+xml'},
+      'rdfxml' => {
+        'name'  => 'RDF',
+        'ext'   => '.rdf',
+        'image' => 'http://www.w3.org/RDF/icons/rdf_metadata_button.32',
+        'mime'  => 'application/rdf+xml'},
+      'rss2' => {
+        'name'  => 'RSS',
+        'ext'   => '.rss',
+        'mime'  => 'application/rss+xml'},
     }
 
   end
