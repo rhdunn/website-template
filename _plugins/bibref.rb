@@ -33,6 +33,10 @@ module Jekyll
       else
         ret << "    <a href=\"#{ref['href']}\"><span property=\"dc:title\">#{ref['title']}</span></a>."
       end
+      if ref['journal']
+        journal = ref['journal']
+        ret << "    <span>#{journal['title']}, pages #{journal['pages']}, volume #{journal['volume']}, number #{journal['number']}.</span>"
+      end
       if pub
         pubref = "pub_#{ref['id']}"
 
