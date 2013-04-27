@@ -28,7 +28,7 @@ Customisation is as easy as:
 2.  Modifying the `_includes/banner.html` file to use your own custom banner;
 3.  Modifying the CSS styling in `css/main.css` to match your website design.
 
-## Building and Deploying
+## Building
 
 To build the website, simply run:
 
@@ -37,6 +37,8 @@ To build the website, simply run:
 This will create a `_site` directory containing the generated static HTML
 pages.
 
+# Deploying Locally
+
 To deploy the website to a locally running Apache webserver, run:
 
     sudo make install
@@ -44,8 +46,25 @@ To deploy the website to a locally running Apache webserver, run:
 This will copy the site content to `/var/www`, which you can then display
 by navigating to `http://127.0.0.1`.
 
-To deploy the site to the web, upload the content of `_site` to the place
-specified by your website hosting service provider.
+# Deploying to the Web
+
+To deploy the site to the web, you need to use an `ftp` program like `lftp`
+that supports recursively uploading files.
+
+First, you need to log into the FTP upload location for your site as given
+by your service provider:
+
+    cd _site
+    lftp <ftp-address> -p <port> -u <username>
+
+Then, after entering your password, you can then upload the content of the
+site using:
+
+    mirror -c -R . .
+
+Once everything is uploaded, you can exit by running:
+
+    quit
 
 ## License
 
