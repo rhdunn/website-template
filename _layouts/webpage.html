@@ -15,7 +15,7 @@ _license: "CC-BY-SA 3.0"
 {% if site.stylesheet %}<link rel="stylesheet" type="text/css" href="{{ site.stylesheet }}"/>
 {% endif %}{% if page.primary_topic_id %}<link rel="foaf:primaryTopic" href="#{{ page.primary_topic_id }}"/>
 {% endif %}{% for feed in page.feeds %}{{ page.url | feed_link: feed }}
-{% endfor %}</head>
+{% endfor %}{% include google_analytics.html %}</head>
 <body typeof="{% if page.typeof %}{{ page.typeof }}{% else %}s:WebPage{% endif %}">
 {% include banner.html %}
 {% for item in page.rdf %}{{ page.url | button: item }}
