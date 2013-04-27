@@ -8,9 +8,6 @@ module Jekyll
     def write(dest)
       dest_path = destination(dest)
       File.open(dest_path, 'w') do |f|
-        f.write("Options -MultiViews\n")
-        f.write("Options -Indexes\n")
-        f.write("\n")
         f.write("AddType application/rdf+xml .rdf\n")
         f.write("\n")
         if @site.config['error_pages']
