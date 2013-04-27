@@ -49,7 +49,9 @@ primary_topic_id: doap
 <th>Developers</th>
 <td>
 <ul>
-{% for item in page.developers %}<li>{% if item.url %}<a rel="doap:developer {% if item.maintainer %}doap:maintainer {% endif %}s:author" href="{{ item.url }}">{{ item.name }}</a>{% else %}<span property="doap:developer {% if item.maintainer %}doap:maintainer {% endif %}s:author">{{ item.name }}</span>{% endif %}</li>
+{% for item in page.developers %}<li>
+{% capture properties %}doap:developer {% if item.maintainer %}doap:maintainer {% endif %}s:author{% endcapture %}{{ item | foaf: properties }}
+</li>
 {% endfor %}</ul>
 </td>
 </tr>
