@@ -8,10 +8,11 @@ module Jekyll
   module RdfSummaryFilter
 
     PROPERTIES = [
-      {'name' => 'subClassOf'    , 'type' => 'uri' , 'label' => 'Type'   , 'property' => 'rdfs:subClassOf'},
-      {'name' => 'subPropertyOf' , 'type' => 'uri' , 'label' => 'Type'   , 'property' => 'rdfs:subPropertyOf'},
-      {'name' => 'domain'        , 'type' => 'uri' , 'label' => 'Domain' , 'property' => 'rdfs:domain'},
-      {'name' => 'range'         , 'type' => 'uri' , 'label' => 'Range'  , 'property' => 'rdfs:range'}
+      {'name' => 'added'         , 'type' => 'date' , 'label' => 'Added'  , 'property' => 'dc:created'},
+      {'name' => 'subClassOf'    , 'type' => 'uri'  , 'label' => 'Type'   , 'property' => 'rdfs:subClassOf'},
+      {'name' => 'subPropertyOf' , 'type' => 'uri'  , 'label' => 'Type'   , 'property' => 'rdfs:subPropertyOf'},
+      {'name' => 'domain'        , 'type' => 'uri'  , 'label' => 'Domain' , 'property' => 'rdfs:domain'},
+      {'name' => 'range'         , 'type' => 'uri'  , 'label' => 'Range'  , 'property' => 'rdfs:range'},
     ]
 
     def rdf_summary(item, item_type)
@@ -65,6 +66,9 @@ module Jekyll
                 end
                 ret << "    <tr><th>#{p['label']}</th><td>#{value}</td></tr>"
               end
+            when 'date'
+              value = item[p['name']]
+              ret << "    <tr><th>#{p['label']}</th><td property=\"#{p['property']}\" datatype=\"xsd:date\">#{value}</td></tr>"
             end
           end
         end
