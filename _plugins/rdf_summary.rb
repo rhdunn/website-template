@@ -16,9 +16,6 @@ module Jekyll
     ]
 
     def rdf_summary(item, item_type)
-      config = @context.registers[:site].config
-      ns = config['namespaces']
-
       case item_type
       when 'class'
         type = 'rdfs:Class'
@@ -52,18 +49,7 @@ module Jekyll
                 uris = uri
               end
               uris.each do |uri|
-                if uri.include? '#'
-                  name  = uri.split('#')[1]
-                  value = "<a rel=\"#{p['property']}\" href=\"#{uri}\">#{name}</a>"
-                else
-                  if uri.include? ':' and not uri.include? 'http://'
-                    nsref, name = uri.split(':')
-                    expanded_uri = "#{ns[nsref]}#{name}"
-                    value = "<a rel=\"#{p['property']}\" href=\"#{expanded_uri}\">#{name}</a>"
-                  else
-                    value = "<a rel=\"#{p['property']}\" href=\"#{uri}\">#{uri}</a>"
-                  end
-                end
+                value = uri_to_anchor(uri, p['property'])
                 ret << "    <tr><th>#{p['label']}</th><td>#{value}</td></tr>"
               end
             when 'date'
@@ -78,6 +64,26 @@ module Jekyll
       ret << "  <a rel=\"rdfs:isDefinedBy\" href=\"#\"></a>"
       ret << "</section>"
       return ret.join("\n")
+    end
+
+  private
+
+    def uri_to_anchor(uri, property)
+      config = @context.registers[:site].config
+      ns = config['namespaces']
+
+      if uri.include? '#'
+        name  = uri.split('#')[1]
+        return "<a rel=\"#{property}\" href=\"#{uri}\">#{name}</a>"
+      else
+        if uri.include? ':' and not uri.include? 'http://'
+          nsref, name = uri.split(':')
+          expanded_uri = "#{ns[nsref]}#{name}"
+          return "<a rel=\"#{property}\" href=\"#{expanded_uri}\">#{name}</a>"
+        else
+          return "<a rel=\"#{property}\" href=\"#{uri}\">#{uri}</a>"
+        end
+      end
     end
 
   end
