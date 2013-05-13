@@ -17,9 +17,15 @@ module Jekyll
 
     def button(item, item_type)
       data  = TYPES[item_type]
-      name  = data['name']
-      href  = item.sub('.html', data['ext'])
-      image = data['image']
+      if data
+        name  = data['name']
+        href  = item.sub('.html', data['ext'])
+        image = data['image']
+      else
+        name  = item['name']
+        href  = item['url']
+        image = item['image']
+      end
       if image
         return "<div class=\"button image\"><a href=\"#{href}\"><img alt=\"#{name}\" title=\"#{name}\" src=\"#{image}\"/></a></div>"
       else

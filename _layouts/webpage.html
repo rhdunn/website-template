@@ -20,6 +20,8 @@ _license: "CC-BY-SA 3.0"
 {% include banner.html %}
 {% for item in page.rdf %}{{ page.url | button: item }}
 {% endfor %}
+{% for item in site.buttons %}{{ item | button: nil }}
+{% endfor %}
 {{ page | breadcrumbs }}
 <div {% if page.primary_topic_id %}id="{{ page.primary_topic_id }}" about="#{{ page.primary_topic_id }}" typeof="{{ page.primary_topic }}" {% endif%}role="main">
 {{ content }}
