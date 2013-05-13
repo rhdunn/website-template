@@ -5,6 +5,12 @@
 
 /* minimalistic styling for HTML content */
 
+html
+{
+	margin: 0 auto;
+	max-width: 800px;
+}
+
 body
 {
 	font-family: sans-serif;
