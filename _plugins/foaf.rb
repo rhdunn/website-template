@@ -13,22 +13,22 @@ module Jekyll
       end
 
       about = item['name'].gsub(/[\ \-\.]/, '_')
-      if item['type']
-        type = item['type']
+      if item['type'] == 'Organization'
+        type = 'foaf:Organization s:Organization'
       else
-        type = 'foaf:Person'
+        type = 'foaf:Person s:Person'
       end
 
       ret = []
       ret << "<a rel=\"#{properties}\" href=\"##{about}\"></a>"
       ret << "<span id=\"#{about}\" about=\"##{about}\" typeof=\"#{type}\">"
       if item['homepage']
-        ret << "<a rel=\"foaf:homepage\" href=\"#{item['homepage']}\" property=\"foaf:name\">#{item['name']}</a>"
+        ret << "<a rel=\"foaf:homepage s:url\" href=\"#{item['homepage']}\" property=\"foaf:name s:name\">#{item['name']}</a>"
       else
         if item['account']
-          ret << "<a rel=\"foaf:account\" href=\"#{item['account']}\" property=\"foaf:name\">#{item['name']}</a>"
+          ret << "<a rel=\"foaf:account\" href=\"#{item['account']}\" property=\"foaf:name s:name\">#{item['name']}</a>"
         else
-          ret << "<span property=\"foaf:name\">#{item['name']}</span>"
+          ret << "<span property=\"foaf:name s:name\">#{item['name']}</span>"
         end
       end
       ret << "</span>"
