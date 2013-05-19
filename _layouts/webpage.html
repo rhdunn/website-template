@@ -4,7 +4,7 @@ _copyright: "Copyright (C) 2013 Reece H. Dunn"
 _license: "CC-BY-SA 3.0"
 ---
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="{% if page.language %}{{ page.language }}{% else %}{{ site.language }}{% endif %}" prefix="{% for ns in site.namespaces %}{{ ns[0] }}: {{ ns[1] }} {% endfor %}">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="{% if page.language %}{{ page.language }}{% else %}{{ site.language }}{% endif %}" prefix="{% for ns in site.namespaces %}{{ ns[0] }}: {{ ns[1] }} {% endfor %}" typeof="{% if page.typeof %}{{ page.typeof }}{% else %}s:WebPage{% endif %}">
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width; initial-scale=1"/>
@@ -16,7 +16,7 @@ _license: "CC-BY-SA 3.0"
 {% endif %}{% if page.primary_topic_id %}<link rel="foaf:primaryTopic" href="#{{ page.primary_topic_id }}"/>
 {% endif %}{% for feed in page.feeds %}{{ page.url | feed_link: feed }}
 {% endfor %}{% include google_analytics.html %}</head>
-<body typeof="{% if page.typeof %}{{ page.typeof }}{% else %}s:WebPage{% endif %}">
+<body>
 {% include banner.html %}
 {% for item in page.rdf %}{{ page.url | button: item }}
 {% endfor %}
