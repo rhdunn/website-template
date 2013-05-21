@@ -69,6 +69,26 @@ sub
 	bottom: -0.25em;
 }
 
+/* headings */
+
+h1
+{
+	font-size: 200%;
+}
+
+h2,
+section > h1
+{
+	font-size: 150%;
+}
+
+h3,
+section > h2,
+section > section > h1
+{
+	font-size: 120%;
+}
+
 /* page layout */
 
 *[role=banner]
