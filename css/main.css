@@ -113,7 +113,8 @@ section > section > h1
 	margin: 1em;
 }
 
-*[role=main] > h1
+*[role=main] > h1,
+*[role=main] > div > h1
 {
 	border-bottom: 2px solid #EEE;
 	font-family: serif;

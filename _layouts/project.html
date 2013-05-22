@@ -3,10 +3,9 @@ layout: webpage
 _copyright: "Copyright (C) 2013 Reece H. Dunn"
 _license: "CC-BY-SA 3.0"
 typeof: s:Blog
-primary_topic: s:SoftwareApplication doap:Project
-primary_topic_id: doap
 ---
 
+<div id="doap" about="#doap" typeof="s:SoftwareApplication">
 {% if page.install_android %}<div class="button image"><a rel="doap:download-page s:downloadURL" href="{{ page.install_android }}"><img alt="{{ page.title }} on Google Play" title="{{ page.title }} on Google Play" src="https://developer.android.com/images/brand/en_app_rgb_wo_45.png"/></a></div>
 {% else %}{% if page.install %}<div class="button"><a rel="doap:download-page s:downloadURL" href="{{ page.install }}">Install</a></div>
 {% endif %}{% endif %}
@@ -89,13 +88,13 @@ primary_topic_id: doap
 {% for app in page.applications %}<dt>{{ app.name }}</dt>
 <dd>{{ app.description }}</dd>
 {% endfor %}</dl>
-{%endif%}<h1>News</h1>
+{%endif%}{% for post in site.categories.release %}{% if post.project == page.title %}<a rel="doap:release" href="{{ post.url | replace: '.html', '' }}#release"></a>
+{% endif %}{% endfor %}</section>
+</div>
+<h2>News</h2>
 <ul class="posts">
 {% for post in site.categories.release %}{% if post.project == page.title %}<li>
 <span>{{ post.date | date_to_string }}</span>
-<a about="" rel="s:blogPost" href="{{ post.url | replace: '.html', '' }}">{% if post.category == 'release' %}{{ post.project }} {{ post.title }} released{% else %}{{ post.title }}{% endif %}</a>
-<a rel="doap:release" href="{{ post.url | replace: '.html', '' }}#release"></a>
+<a rel="s:blogPost" href="{{ post.url | replace: '.html', '' }}">{% if post.category == 'release' %}{{ post.project }} {{ post.title }} released{% else %}{{ post.title }}{% endif %}</a>
 </li>
 {% endif %}{% endfor %}</ul>
-
-</section>
