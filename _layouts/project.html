@@ -13,7 +13,7 @@ typeof: s:Blog
 
 <h1 property="doap:name s:name">{{ page.title }}</h1>
 
-<blockquote class="about" property="doap:shortdesc">{{ page.description }}</blockquote>
+<blockquote class="about" property="{% if page.long-description %}doap:shortdesc{% else %}doap:shortdesc doap:description s:description{% endif %}">{{ page.description }}</blockquote>
 
 <table class="info">
 <col width="33%"/><col width="67%"/>
@@ -77,7 +77,7 @@ typeof: s:Blog
 {% endif %}</table>
 
 {% if page.screenshot %}<div><img class="screenshot" src="{{ page.screenshot.src }}" alt="{{ page.screenshot.alt }}"/></div>
-{% endif %}<p property="doap:description s:description">{{ page.long-description }}</p>
+{% endif %}{% if page.long-description %}<p property="doap:description s:description">{{ page.long-description }}</p>{% endif %}
 
 <section>
 {{ content }}
