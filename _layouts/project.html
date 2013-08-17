@@ -17,18 +17,18 @@ typeof: s:Blog
 
 <table class="info">
 <col width="33%"/><col width="67%"/>
-<tr>
+{% if page.issues %}<tr>
 <th>Report Issues To</th>
 <td><a rel="doap:bug-database" href="{{ page.issues }}">{{ page.issues }}</a></td>
 </tr>
-{% for item in page.repositories %}<tr>
+{% endif %}{% for item in page.repositories %}<tr>
 <th><a property="doap:repository" href="#{{ item.id }}"></a>{{ item.name }}</th>
 <td about="#{{ item.id }}" id="{{ item.id }}" typeof="doap:GitRepository">
 <span rel="doap:location" resource="{{ item.location }}">{{ item.location }}</span>
 [<a rel="doap:browse" href="{{ item.browse }}">Browse</a>]
 </td>
 </tr>
-{% endfor %}<tr>
+{% endfor %}{% if page.programming-language %}<tr>
 <th>Programming Language</th>
 <td>
 <ul>
@@ -36,6 +36,7 @@ typeof: s:Blog
 {% endfor %}</ul>
 </td>
 </tr>
+{% endif %}
 <tr>
 <th>Operating System</th>
 <td>
