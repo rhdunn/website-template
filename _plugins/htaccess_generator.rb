@@ -18,6 +18,21 @@ module Jekyll
         end
         f.write("RewriteEngine On\n")
         f.write("\n")
+        @site.pages.each do |item|
+          if item.data['alias']
+            item.data['alias'].each do |redirect|
+              f.write("Redirect 301 #{redirect} #{item.url}\n")
+            end
+          end
+        end
+        @site.posts.each do |item|
+          if item.data['alias']
+            item.data['alias'].each do |redirect|
+              f.write("Redirect 301 #{redirect} #{item.url}\n")
+            end
+          end
+        end
+        f.write("\n")
         f.write("# Redirect X.html to X\n")
         f.write("RewriteCond %{THE_REQUEST} ^(GET|HEAD)\\ /.+\\.html\\ HTTP\n")
         f.write("RewriteRule ^(.+)\\.html$ http://%{HTTP_HOST}/$1 [R=301,L]\n")
